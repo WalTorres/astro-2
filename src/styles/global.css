@@ -6,8 +6,17 @@ html {
 *::after,
 *::before {
   box-sizing: inherit;
-  padding: 0;
-  margin: 0;
+}
+
+:root {
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --sucess: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --light: #f8f9fa;
+  --dark: #343a40;
 }
 
 body {

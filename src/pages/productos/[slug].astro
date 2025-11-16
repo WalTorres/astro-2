@@ -1,0 +1,211 @@
+---
+import { productos } from "../../data/productos.js";
+import Layout from "../../layout/Layout.astro";
+
+export async function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+const { producto } = Astro.props;
+---
+
+<Layout>
+  <main>
+    <div class="container">
+      <a href="/productos" class="back-link">← Volver a productos</a>
+
+      <div class="product-detail">
+        <div class="image-section">
+          <img src={producto.image} alt={producto.name} />
+        </div>
+
+        <div class="info-section">
+          <h1>{producto.name}</h1>
+
+          <div class="price-stock">
+            <p class="price">S/ {producto.price}</p>
+            {
+              producto.inStock ? (
+                <span class="badge in-stock">Disponible</span>
+              ) : (
+                <span class="badge out-stock">Agotado</span>
+              )
+            }
+          </div>
+
+          <div class="description">
+            <h2>Descripción</h2>
+            <p>{producto.description}</p>
+          </div>
+
+          <div class="specs">
+            <h2>Especificaciones</h2>
+            <ul>
+              {producto.specs.map((spec) => <li>{spec}</li>)}
+            </ul>
+          </div>
+
+          {
+            producto.inStock && (
+              <button class="buy-button">Agregar al carrito</button>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    background: #f5f5f5;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .product-detail {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-section img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .info-section {
+    padding: 2rem;
+  }
+
+  h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  .price-stock {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2563eb;
+    margin: 0;
+  }
+
+  .badge {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .in-stock {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  .out-stock {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  .description,
+  .specs {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .description p {
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .specs ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .specs li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #666;
+  }
+
+  .specs li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #16a34a;
+    font-weight: bold;
+  }
+
+  .buy-button {
+    width: 100%;
+    padding: 1rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .buy-button:hover {
+    background: #1d4ed8;
+  }
+
+  @media (max-width: 768px) {
+    .product-detail {
+      grid-template-columns: 1fr;
+    }
+
+    .image-section img {
+      height: 300px;
+    }
+  }
+</style>

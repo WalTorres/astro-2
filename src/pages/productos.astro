@@ -1,0 +1,45 @@
+---
+import ProductCard from "../components/ProductCard.astro";
+import { productos } from "../data/productos.js";
+import Layout from "../layout/Layout.astro";
+---
+
+<Layout>
+  <div class="container">
+    <h1>Nuestros Productos</h1>
+
+    <div class="products-grid">
+      {productos.map((producto) => <ProductCard {...producto} />)}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    background: #f5f5f5;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>
