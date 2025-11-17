@@ -1,0 +1,39 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  link: string;
+}
+
+const { title, description, link } = Astro.props;
+---
+
+<article class="card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+
+  <Button variant="outline" href={link}> Saber Más </Button>
+</article>
+
+<style>
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+</style>

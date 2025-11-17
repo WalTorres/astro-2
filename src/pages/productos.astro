@@ -1,10 +1,30 @@
 ---
 import ProductCard from "../components/ProductCard.astro";
+import ServiceCard from "../components/ServiceCard.astro";
 import { productos } from "../data/productos.js";
 import Layout from "../layout/Layout.astro";
 ---
 
 <Layout>
+  <div class="services">
+    <ServiceCard
+      title="Desarrollo Web"
+      description="Sitios web modernos y rapidos"
+      link="/servicios/web"
+    />
+    <ServiceCard
+      title="SEO"
+      description="Mejora tu posicionamiento"
+      link="/servicios/seo"
+    />
+
+    <ServiceCard
+      title="Marketing"
+      description="Estrategias efectivas"
+      link="/servicios/marketing"
+    />
+  </div>
+
   <div class="container">
     <h1>Nuestros Productos</h1>
 
@@ -41,5 +61,12 @@ import Layout from "../layout/Layout.astro";
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
   }
 </style>

@@ -1,9 +1,80 @@
 ---
-const { type = "button", size = "md" } = Astro.props;
+interface Props {
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit";
+}
+
+const { variant = "primary", size = "md", href, type = "button" } = Astro.props;
+
+const Element = href ? "a" : "button";
 ---
 
-<button {type} data-size={size}>
+<Element
+  class={`btn btn-${variant} btn-${size}`}
+  href={href}
+  type={!href ? type : undefined}
+>
   <slot />
-</button>
+</Element>
 
-<style></style>
+<style>
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  /* Tamaños */
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  /* Variantes */
+  .btn-primary {
+    background: #667eea;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: #6b7280;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #4b5563;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+  }
+
+  .btn-outline:hover {
+    background: #667eea;
+    color: white;
+  }
+</style>
