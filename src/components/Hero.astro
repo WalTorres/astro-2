@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/hero-image.webp";
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Transforma tu Negocio Digital</h1>
+    <p>
+      Soluciones web modernas y ultrarrápidas para impulsar tu presencia online
+    </p>
+    <div class="cta-buttons">
+      <a href="#contacto" class="btn btn-primary">Comenzar Ahora</a>
+      <a href="#features" class="btn btn-secondary">Ver Características</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <Image
+      src={heroImage}
+      alt="Ilustración del producto"
+      width="500"
+      height="400"
+      format="webp"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2rem;
+    margin: 2rem;
+    color: white;
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: white;
+    color: #667eea;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+    max-width: 600px;
+  }
+
+  @media (max-width: 1024px) {
+    .hero__image {
+      max-width: 450px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero__image {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

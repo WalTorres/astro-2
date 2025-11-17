@@ -1,11 +1,18 @@
 ---
+import { Image } from "astro:assets";
+
+import Features from "../components/Features.astro";
+import Hero from "../components/Hero.astro";
+import Pricing from "../components/Pricing.astro";
 import Layout from "../layout/Layout.astro";
 ---
 
 <Layout>
-  <h1>Puchunga ñañez</h1>
-  <h2>Bienvenidos</h2>
-  <h3>Landingpage</h3>
+  <main>
+    <Hero />
+    <Features />
+    <Pricing />
+  </main>
 </Layout>
 
 <script>

@@ -1,0 +1,91 @@
+---
+const features = [
+  {
+    icon: "⚡",
+    title: "Velocidad Extrema",
+    description: "Carga instantánea con arquitectura de islas y HTML estático",
+  },
+  {
+    icon: "🎨",
+    title: "Diseño Flexible",
+    description: "Componentes reutilizables y estilos personalizables",
+  },
+  {
+    icon: "🔍",
+    title: "SEO Optimizado",
+    description: "Mejor posicionamiento con contenido estático por defecto",
+  },
+  {
+    icon: "📱",
+    title: "100% Responsive",
+    description: "Perfecto en cualquier dispositivo y tamaño de pantalla",
+  },
+];
+---
+
+<section id="features" class="features">
+  <h2>¿Por qué elegirnos?</h2>
+  <div class="features-grid">
+    {
+      features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-icon">{feature.icon}</div>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    text-align: center;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #667eea;
+  }
+
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+</style>

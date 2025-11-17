@@ -1,0 +1,159 @@
+---
+const plans = [
+  {
+    name: "Básico",
+    price: "29",
+    features: [
+      "5 Páginas",
+      "Hosting incluido",
+      "Soporte por email",
+      "SSL gratis",
+    ],
+  },
+  {
+    name: "Pro",
+    price: "79",
+    featured: true,
+    features: [
+      "Páginas ilimitadas",
+      "Hosting premium",
+      "Soporte 24/7",
+      "SEO avanzado",
+    ],
+  },
+  {
+    name: "Empresa",
+    price: "199",
+    features: [
+      "Todo en Pro",
+      "Diseño personalizado",
+      "Consultor dedicado",
+      "Analíticas avanzadas",
+    ],
+  },
+];
+---
+
+<section class="pricing">
+  <h2>Planes y Precios</h2>
+  <div class="pricing-grid">
+    {
+      plans.map((plan) => (
+        <div class={`pricing-card ${plan.featured ? "featured" : ""}`}>
+          {plan.featured && <span class="badge">Popular</span>}
+          <h3>{plan.name}</h3>
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount">{plan.price}</span>
+            <span class="period">/mes</span>
+          </div>
+          <ul class="features-list">
+            {plan.features.map((feature) => (
+              <li>✓ {feature}</li>
+            ))}
+          </ul>
+          <a href="#contacto" class="btn-plan">
+            Seleccionar Plan
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .pricing {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  .pricing h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    border: 2px solid #e0e0e0;
+    transition: transform 0.3s;
+  }
+
+  .pricing-card:hover {
+    transform: scale(1.05);
+  }
+
+  .pricing-card.featured {
+    border-color: #667eea;
+    transform: scale(1.05);
+  }
+
+  .badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #667eea;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .price {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #667eea;
+    margin: 1rem 0;
+  }
+
+  .currency,
+  .period {
+    font-size: 1.5rem;
+    color: #666;
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+  }
+
+  .features-list li {
+    padding: 0.5rem 0;
+    color: #666;
+  }
+
+  .btn-plan {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .btn-plan:hover {
+    background: #5568d3;
+  }
+</style>
